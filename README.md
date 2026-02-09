@@ -2,62 +2,61 @@
 
 <details>
 <summary><strong>ECOSYSTEM</strong> (1 ✓ 0/2)</summary>
-<ul>
-<li>[x] Задача 1</li>
-<li>[ ] Задача 2</li>
-</ul>
+<div style="margin-left: 20px;">
+[x] Задача 1<br>
+[ ] Задача 2
+</div>
 </details>
 
 <details>
 <summary><strong>Магазин</strong> (1 ✓ 0/11)</summary>
-<ul>
-<li>[x] Товар 1</li>
-<li>[ ] Товар 2</li>
-<li>[ ] Товар 3</li>
-<li>[ ] Товар 4</li>
-<li>[ ] Товар 5</li>
-<li>[ ] Товар 6</li>
-<li>[ ] Товар 7</li>
-<li>[ ] Товар 8</li>
-<li>[ ] Товар 9</li>
-<li>[ ] Товар 10</li>
-<li>[ ] Товар 11</li>
-</ul>
+<div style="margin-left: 20px;">
+[x] Товар 1<br>
+[ ] Товар 2<br>
+[ ] Товар 3<br>
+[ ] Товар 4<br>
+[ ] Товар 5<br>
+[ ] Товар 6<br>
+[ ] Товар 7<br>
+[ ] Товар 8<br>
+[ ] Товар 9<br>
+[ ] Товар 10<br>
+[ ] Товар 11
+</div>
 </details>
 
 <details>
 <summary><strong>Музыкальные инструменты</strong> (0/5)</summary>
-<ul>
-<li>
+<div style="margin-left: 20px;">
 <details>
 <summary><strong>Клавишные</strong> (0/2)</summary>
-<ul>
-<li><strong>Акустические</strong></li>
-<li><strong>Электронные</strong></li>
-</ul>
-</details>
-</li>
-<li><strong>Струнные</strong></li>
-<li><strong>Ударные</strong></li>
-<li><strong>Духовые</strong></li>
-</ul>
+<div style="margin-left: 20px;">
+<strong>Акустические</strong><br>
+<strong>Электронные</strong>
+</div>
 </details>
 
-- **Аксессуары для музыкантов**
+<strong>Струнные</strong><br>
+<strong>Ударные</strong><br>
+<strong>Духовые</strong>
+</div>
+</details>
+
+<strong>Аксессуары для музыкантов</strong>
 
 <details>
 <summary><strong>Аудиооборудование</strong> (0/2)</summary>
-<ul>
-<li>[ ] Оборудование 1</li>
-<li>[ ] Оборудование 2</li>
-</ul>
+<div style="margin-left: 20px;">
+[ ] Оборудование 1<br>
+[ ] Оборудование 2
+</div>
 </details>
 
-- **Световое оборудование**
+<strong>Световое оборудование</strong>
 
 <details>
 <summary><strong>Софт</strong> (1)</summary>
-<ul>
-<li>[x] Программа 1</li>
-</ul>
+<div style="margin-left: 20px;">
+[x] Программа 1
+</div>
 </details>

@@ -26,12 +26,12 @@
 <details>
 <summary><strong>Музыкальные инструменты</strong> (0/5)</summary>
 
-<details>
-<summary><strong>Клавишные</strong> (0/2)</summary>
-
-- **Акустические**
-- **Электронные**
-</details>
+&nbsp;&nbsp;<details>
+&nbsp;&nbsp;<summary><strong>Клавишные</strong> (0/2)</summary>
+&nbsp;&nbsp;
+&nbsp;&nbsp;- **Акустические**  
+&nbsp;&nbsp;- **Электронные**  
+&nbsp;&nbsp;</details>
 
 - **Струнные**
 - **Ударные**

@@ -67,6 +67,7 @@
             align-items: center;
             transition: background 0.2s;
             position: relative;
+            cursor: pointer;
         }
         
         .item:hover {
@@ -136,11 +137,11 @@
         .toggle {
             margin-left: 10px;
             color: #94a3b8;
-            cursor: pointer;
             font-size: 12px;
             transition: transform 0.3s;
             width: 20px;
             text-align: center;
+            user-select: none;
         }
         
         .toggle.expanded {
@@ -154,44 +155,6 @@
         
         .children.collapsed {
             display: none;
-        }
-        
-        .icon {
-            margin-right: 10px;
-            font-size: 14px;
-        }
-        
-        .progress {
-            display: inline-block;
-            width: 60px;
-            height: 6px;
-            background: #e2e8f0;
-            border-radius: 3px;
-            margin-left: 10px;
-            vertical-align: middle;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: #10b981;
-            border-radius: 3px;
-            transition: width 0.5s ease;
-        }
-        
-        .price {
-            color: #059669;
-            font-size: 14px;
-            margin-top: 2px;
-            font-weight: 500;
-        }
-        
-        .empty {
-            font-style: italic;
-            color: #94a3b8;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
         }
         
         footer {
@@ -250,46 +213,46 @@
         
         <div class="ecosystem">
             <!-- ECOSYSTEM - корневой уровень -->
-            <div class="item level-0 main">
+            <div class="item level-0 main" onclick="toggleItem('ecosystem-root', this)">
                 <div class="indicator main"></div>
                 <div class="content">
                     <span class="title">ECOSYSTEM</span>
                     <span class="stats completed">5 ✓ 2/12</span>
                 </div>
-                <div class="toggle" onclick="toggleChildren('ecosystem-root')">▶</div>
+                <div class="toggle expanded">▶</div>
             </div>
             
             <div id="ecosystem-root" class="children">
                 <!-- МАГАЗИН -->
-                <div class="item level-1 main">
+                <div class="item level-1 main" onclick="toggleItem('shop', this)">
                     <div class="indicator shop"></div>
                     <div class="content">
                         <span class="title">Магазин</span>
                         <span class="stats completed">1 ✓ 0/11</span>
                     </div>
-                    <div class="toggle" onclick="toggleChildren('shop')">▶</div>
+                    <div class="toggle">▶</div>
                 </div>
                 
-                <div id="shop" class="children">
+                <div id="shop" class="children collapsed">
                     <!-- Музыкальные инструменты -->
-                    <div class="item level-2">
+                    <div class="item level-2" onclick="toggleItem('instruments', this)">
                         <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Музыкальные инструменты</span>
                             <span class="stats">✓ 0/5</span>
                         </div>
-                        <div class="toggle" onclick="toggleChildren('instruments')">▶</div>
+                        <div class="toggle">▶</div>
                     </div>
                     
                     <div id="instruments" class="children collapsed">
                         <!-- Клавишные -->
-                        <div class="item level-3">
+                        <div class="item level-3" onclick="toggleItem('keyboards', this)">
                             <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Клавишные</span>
                                 <span class="stats">✓ 0/2</span>
                             </div>
-                            <div class="toggle" onclick="toggleChildren('keyboards')">▶</div>
+                            <div class="toggle">▶</div>
                         </div>
                         
                         <div id="keyboards" class="children collapsed">
@@ -320,12 +283,12 @@
                         </div>
                         
                         <!-- Гитары, акулеле -->
-                        <div class="item level-3">
+                        <div class="item level-3" onclick="toggleItem('guitars', this)">
                             <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Гитары, акулеле</span>
                             </div>
-                            <div class="toggle" onclick="toggleChildren('guitars')">▶</div>
+                            <div class="toggle">▶</div>
                         </div>
                         
                         <div id="guitars" class="children collapsed">
@@ -392,12 +355,12 @@
                         </div>
                         
                         <!-- Ударные -->
-                        <div class="item level-3">
+                        <div class="item level-3" onclick="toggleItem('drums', this)">
                             <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Ударные</span>
                             </div>
-                            <div class="toggle" onclick="toggleChildren('drums')">▶</div>
+                            <div class="toggle">▶</div>
                         </div>
                         
                         <div id="drums" class="children collapsed">
@@ -452,12 +415,12 @@
                         </div>
                         
                         <!-- Смычковые -->
-                        <div class="item level-3">
+                        <div class="item level-3" onclick="toggleItem('bows', this)">
                             <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Смычковые</span>
                             </div>
-                            <div class="toggle" onclick="toggleChildren('bows')">▶</div>
+                            <div class="toggle">▶</div>
                         </div>
                         
                         <div id="bows" class="children collapsed">
@@ -512,12 +475,12 @@
                         </div>
                         
                         <!-- Духовые -->
-                        <div class="item level-3">
+                        <div class="item level-3" onclick="toggleItem('winds', this)">
                             <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Духовые</span>
                             </div>
-                            <div class="toggle" onclick="toggleChildren('winds')">▶</div>
+                            <div class="toggle">▶</div>
                         </div>
                         
                         <div id="winds" class="children collapsed">
@@ -566,12 +529,12 @@
                         </div>
                         
                         <!-- Народные, этнические -->
-                        <div class="item level-3">
+                        <div class="item level-3" onclick="toggleItem('folk', this)">
                             <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Народные, этнические</span>
                             </div>
-                            <div class="toggle" onclick="toggleChildren('folk')">▶</div>
+                            <div class="toggle">▶</div>
                         </div>
                         
                         <div id="folk" class="children collapsed">
@@ -627,12 +590,12 @@
                     </div>
                     
                     <!-- Музыкальное оборудование -->
-                    <div class="item level-2">
+                    <div class="item level-2" onclick="toggleItem('equipment', this)">
                         <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Музыкальное оборудование</span>
                         </div>
-                        <div class="toggle" onclick="toggleChildren('equipment')">▶</div>
+                        <div class="toggle">▶</div>
                     </div>
                     
                     <div id="equipment" class="children collapsed">
@@ -712,13 +675,13 @@
                 </div>
                 
                 <!-- СЕРВИСЫ И УСЛУГИ -->
-                <div class="item level-1 main">
+                <div class="item level-1 main" onclick="toggleItem('services', this)">
                     <div class="indicator services"></div>
                     <div class="content">
                         <span class="title">Сервисы и услуги</span>
                         <span class="stats">% 0/7</span>
                     </div>
-                    <div class="toggle" onclick="toggleChildren('services')">▶</div>
+                    <div class="toggle">▶</div>
                 </div>
                 
                 <div id="services" class="children">
@@ -763,12 +726,12 @@
                     </div>
                     
                     <!-- Издание физических носителей -->
-                    <div class="item level-2">
+                    <div class="item level-2" onclick="toggleItem('media', this)">
                         <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Издание физических носителей</span>
                         </div>
-                        <div class="toggle" onclick="toggleChildren('media')">▶</div>
+                        <div class="toggle">▶</div>
                     </div>
                     
                     <div id="media" class="children collapsed">
@@ -793,12 +756,12 @@
                     </div>
                     
                     <!-- Студийные услуги -->
-                    <div class="item level-2">
+                    <div class="item level-2" onclick="toggleItem('studio', this)">
                         <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Студийные услуги</span>
                         </div>
-                        <div class="toggle" onclick="toggleChildren('studio')">▶</div>
+                        <div class="toggle">▶</div>
                     </div>
                     
                     <div id="studio" class="children collapsed">
@@ -843,9 +806,11 @@
 
     <script>
         // Функция для переключения видимости дочерних элементов
-        function toggleChildren(elementId) {
+        function toggleItem(elementId, clickedElement) {
             const element = document.getElementById(elementId);
-            const toggle = event.currentTarget;
+            const toggle = clickedElement.querySelector('.toggle');
+            
+            if (!element || !toggle) return;
             
             if (element.classList.contains('collapsed')) {
                 element.classList.remove('collapsed');
@@ -854,22 +819,19 @@
                 element.classList.add('collapsed');
                 toggle.classList.remove('expanded');
             }
-            
-            event.stopPropagation();
         }
         
         // Инициализация состояния
         document.addEventListener('DOMContentLoaded', function() {
-            // Автоматически разворачиваем первые уровни
+            // Автоматически разворачиваем корневой уровень
             document.getElementById('ecosystem-root').classList.remove('collapsed');
-            document.querySelector('.item.level-0 .toggle').classList.add('expanded');
             
-            // Добавляем обработчики для всех toggle элементов
-            document.querySelectorAll('.toggle').forEach(toggle => {
-                toggle.addEventListener('click', function(event) {
-                    const elementId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-                    toggleChildren(elementId);
-                });
+            // Добавляем обработчики для всех элементов с классом item, у которых есть toggle
+            document.querySelectorAll('.item').forEach(item => {
+                // Проверяем, есть ли внутри toggle
+                if (item.querySelector('.toggle')) {
+                    item.style.cursor = 'pointer';
+                }
             });
         });
     </script>

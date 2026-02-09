@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Структура экосистемы</title>
+    <title>ECOSYSTEM</title>
     <style>
         * {
             margin: 0;
@@ -30,7 +30,7 @@
         }
         
         header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: #1e293b;
             color: white;
             padding: 25px 30px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -54,14 +54,14 @@
         }
         
         /* Уровни иерархии */
-        .level-0 { padding-left: 25px; }
-        .level-1 { padding-left: 45px; border-left: 2px solid #dbeafe; }
-        .level-2 { padding-left: 65px; border-left: 2px solid #e0e7ff; }
-        .level-3 { padding-left: 85px; border-left: 2px solid #ede9fe; }
-        .level-4 { padding-left: 105px; border-left: 2px solid #f3f4f6; }
+        .level-0 { padding-left: 30px; }
+        .level-1 { padding-left: 50px; }
+        .level-2 { padding-left: 70px; }
+        .level-3 { padding-left: 90px; }
+        .level-4 { padding-left: 110px; }
         
         .item {
-            padding: 14px 20px;
+            padding: 16px 20px;
             border-bottom: 1px solid #f1f5f9;
             display: flex;
             align-items: center;
@@ -76,28 +76,8 @@
         
         .item.main {
             background: #eff6ff;
-            border-bottom: 2px solid #3b82f6;
             font-weight: 600;
         }
-        
-        .item.sub {
-            background: #f8fafc;
-        }
-        
-        .indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-        
-        .indicator.main { background: #3b82f6; }
-        .indicator.shop { background: #10b981; }
-        .indicator.services { background: #8b5cf6; }
-        .indicator.category { background: #f59e0b; }
-        .indicator.subcategory { background: #ef4444; }
-        .indicator.item { background: #94a3b8; }
         
         .content {
             flex: 1;
@@ -107,21 +87,22 @@
         }
         
         .title {
-            font-size: 15px;
+            font-size: 16px;
             color: #1e293b;
+            display: flex;
+            align-items: center;
         }
         
         .item.main .title {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 17px;
             color: #1e40af;
         }
         
         .stats {
-            font-size: 13px;
+            font-size: 14px;
             color: #64748b;
             background: #f1f5f9;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 12px;
             margin-left: 15px;
             min-width: 70px;
@@ -136,7 +117,7 @@
         
         .toggle {
             margin-left: 10px;
-            color: #94a3b8;
+            color: #64748b;
             font-size: 12px;
             transition: transform 0.3s;
             width: 20px;
@@ -156,6 +137,22 @@
         .children.collapsed {
             display: none;
         }
+        
+        /* Вертикальные линии для иерархии */
+        .item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: transparent;
+        }
+        
+        .level-1::before { left: 30px; background: #dbeafe; }
+        .level-2::before { left: 50px; background: #e0e7ff; }
+        .level-3::before { left: 70px; background: #ede9fe; }
+        .level-4::before { left: 90px; background: #f3f4f6; }
         
         footer {
             padding: 20px 30px;
@@ -187,19 +184,28 @@
             }
             
             .item {
-                padding: 12px 15px;
+                padding: 14px 15px;
             }
             
-            .level-0 { padding-left: 15px; }
-            .level-1 { padding-left: 30px; }
-            .level-2 { padding-left: 45px; }
-            .level-3 { padding-left: 60px; }
-            .level-4 { padding-left: 75px; }
+            .level-0 { padding-left: 20px; }
+            .level-1 { padding-left: 35px; }
+            .level-2 { padding-left: 50px; }
+            .level-3 { padding-left: 65px; }
+            .level-4 { padding-left: 80px; }
+            
+            .level-1::before { left: 20px; }
+            .level-2::before { left: 35px; }
+            .level-3::before { left: 50px; }
+            .level-4::before { left: 65px; }
             
             .stats {
-                font-size: 11px;
-                padding: 2px 8px;
+                font-size: 12px;
+                padding: 3px 10px;
                 min-width: 60px;
+            }
+            
+            .title {
+                font-size: 15px;
             }
         }
     </style>
@@ -214,7 +220,6 @@
         <div class="ecosystem">
             <!-- ECOSYSTEM - корневой уровень -->
             <div class="item level-0 main" onclick="toggleItem('ecosystem-root', this)">
-                <div class="indicator main"></div>
                 <div class="content">
                     <span class="title">ECOSYSTEM</span>
                     <span class="stats completed">5 ✓ 2/12</span>
@@ -225,7 +230,6 @@
             <div id="ecosystem-root" class="children">
                 <!-- МАГАЗИН -->
                 <div class="item level-1 main" onclick="toggleItem('shop', this)">
-                    <div class="indicator shop"></div>
                     <div class="content">
                         <span class="title">Магазин</span>
                         <span class="stats completed">1 ✓ 0/11</span>
@@ -236,7 +240,6 @@
                 <div id="shop" class="children collapsed">
                     <!-- Музыкальные инструменты -->
                     <div class="item level-2" onclick="toggleItem('instruments', this)">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Музыкальные инструменты</span>
                             <span class="stats">✓ 0/5</span>
@@ -247,7 +250,6 @@
                     <div id="instruments" class="children collapsed">
                         <!-- Клавишные -->
                         <div class="item level-3" onclick="toggleItem('keyboards', this)">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Клавишные</span>
                                 <span class="stats">✓ 0/2</span>
@@ -257,25 +259,21 @@
                         
                         <div id="keyboards" class="children collapsed">
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Цифровые пианино</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Синтезаторы</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">MIDI клавиатуры, контроллеры</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Аксессуары</span>
                                 </div>
@@ -284,7 +282,6 @@
                         
                         <!-- Гитары, акулеле -->
                         <div class="item level-3" onclick="toggleItem('guitars', this)">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Гитары, акулеле</span>
                             </div>
@@ -293,61 +290,51 @@
                         
                         <div id="guitars" class="children collapsed">
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Акустические гитары</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Классические гитары</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Акулеле</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Электрогитары</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Бас-гитары</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Струны</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Педали, процессоры эффектов</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Усилители</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Чехлы, кейсы</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Тюнеры, камертоны, метрономы</span>
                                 </div>
@@ -356,7 +343,6 @@
                         
                         <!-- Ударные -->
                         <div class="item level-3" onclick="toggleItem('drums', this)">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Ударные</span>
                             </div>
@@ -365,49 +351,41 @@
                         
                         <div id="drums" class="children collapsed">
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Акустические ударные</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Электронные ударные</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Перкуссия</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Палочки, щётки, колотушки</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Педали</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Стойки, крепления</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Стулья</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Пластики</span>
                                 </div>
@@ -416,7 +394,6 @@
                         
                         <!-- Смычковые -->
                         <div class="item level-3" onclick="toggleItem('bows', this)">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Смычковые</span>
                             </div>
@@ -425,49 +402,41 @@
                         
                         <div id="bows" class="children collapsed">
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Скрипки</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Альты</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Виолончели</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Контрабасы</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Смычки</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Подбородники, мостики</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Струны, канифоль</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Чехлы, кейсы</span>
                                 </div>
@@ -476,7 +445,6 @@
                         
                         <!-- Духовые -->
                         <div class="item level-3" onclick="toggleItem('winds', this)">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Духовые</span>
                             </div>
@@ -485,43 +453,36 @@
                         
                         <div id="winds" class="children collapsed">
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Медные</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Деревянные</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Мундштуки</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Трости</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Лигатуры</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Чехлы, кейсы</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Губные гармошки, мелодики</span>
                                 </div>
@@ -530,7 +491,6 @@
                         
                         <!-- Народные, этнические -->
                         <div class="item level-3" onclick="toggleItem('folk', this)">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Народные, этнические</span>
                             </div>
@@ -539,49 +499,41 @@
                         
                         <div id="folk" class="children collapsed">
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Балалайки</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Домры</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Банджо</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Мандолины</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Гусли</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Аккордеоны</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Баяны</span>
                                 </div>
                             </div>
                             <div class="item level-4">
-                                <div class="indicator item"></div>
                                 <div class="content">
                                     <span class="title">Гармони</span>
                                 </div>
@@ -591,7 +543,6 @@
                     
                     <!-- Музыкальное оборудование -->
                     <div class="item level-2" onclick="toggleItem('equipment', this)">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Музыкальное оборудование</span>
                         </div>
@@ -601,7 +552,6 @@
                     <div id="equipment" class="children collapsed">
                         <!-- Студийное оборудование -->
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Студийное оборудование</span>
                             </div>
@@ -609,7 +559,6 @@
                         
                         <!-- Концертное оборудование -->
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Концертное оборудование</span>
                             </div>
@@ -617,7 +566,6 @@
                         
                         <!-- Домашнее оборудование -->
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Домашнее оборудование</span>
                             </div>
@@ -626,7 +574,6 @@
                     
                     <!-- Музыкальный софт -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Музыкальный софт</span>
                         </div>
@@ -634,7 +581,6 @@
                     
                     <!-- Физические носители -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Физические носители</span>
                         </div>
@@ -642,7 +588,6 @@
                     
                     <!-- Музыкальная литература -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Музыкальная литература</span>
                         </div>
@@ -650,7 +595,6 @@
                     
                     <!-- Новинки -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Новинки (1 мес.)</span>
                         </div>
@@ -658,7 +602,6 @@
                     
                     <!-- Акции -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Акции</span>
                         </div>
@@ -666,7 +609,6 @@
                     
                     <!-- Уценки -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Уцененные товары</span>
                             <span class="stats">0/3</span>
@@ -676,7 +618,6 @@
                 
                 <!-- СЕРВИСЫ И УСЛУГИ -->
                 <div class="item level-1 main" onclick="toggleItem('services', this)">
-                    <div class="indicator services"></div>
                     <div class="content">
                         <span class="title">Сервисы и услуги</span>
                         <span class="stats">% 0/7</span>
@@ -687,7 +628,6 @@
                 <div id="services" class="children">
                     <!-- Дистрибьюция музыки -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Дистрибьюция музыки</span>
                         </div>
@@ -695,7 +635,6 @@
                     
                     <!-- Дистрибьюция клипов -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Дистрибьюция клипов</span>
                         </div>
@@ -703,7 +642,6 @@
                     
                     <!-- Продвижение -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Продвижение</span>
                         </div>
@@ -711,7 +649,6 @@
                     
                     <!-- Смартлинк -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Смартлинк</span>
                         </div>
@@ -719,7 +656,6 @@
                     
                     <!-- Концерт касса -->
                     <div class="item level-2">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Концерт касса</span>
                         </div>
@@ -727,7 +663,6 @@
                     
                     <!-- Издание физических носителей -->
                     <div class="item level-2" onclick="toggleItem('media', this)">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Издание физических носителей</span>
                         </div>
@@ -736,19 +671,16 @@
                     
                     <div id="media" class="children collapsed">
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Винил</span>
                             </div>
                         </div>
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">CD</span>
                             </div>
                         </div>
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Кассеты</span>
                             </div>
@@ -757,7 +689,6 @@
                     
                     <!-- Студийные услуги -->
                     <div class="item level-2" onclick="toggleItem('studio', this)">
-                        <div class="indicator category"></div>
                         <div class="content">
                             <span class="title">Студийные услуги</span>
                         </div>
@@ -766,19 +697,16 @@
                     
                     <div id="studio" class="children collapsed">
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Запись инструментов</span>
                             </div>
                         </div>
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Сведение</span>
                             </div>
                         </div>
                         <div class="item level-3">
-                            <div class="indicator subcategory"></div>
                             <div class="content">
                                 <span class="title">Мастеринг</span>
                             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECOSYSTEM</title>
+    <title>Защищенная структура экосистемы</title>
     <style>
         * {
             margin: 0;
@@ -15,25 +15,112 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f8fafc;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* Экран ввода пароля */
+        #passwordScreen {
             background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        #passwordScreen h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        #passwordScreen p {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: 2px solid #e2e8f0;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+        
+        .password-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .password-button {
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .password-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .password-button:active {
+            transform: translateY(0);
+        }
+        
+        .error-message {
+            color: #e53e3e;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .attempts {
+            font-size: 13px;
+            color: #a0aec0;
+            margin-top: 15px;
+        }
+        
+        /* Основной контейнер (скрыт изначально) */
+        #mainContainer {
+            display: none;
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
         
         header {
-            background: #1e293b;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             color: white;
             padding: 25px 30px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         h1 {
@@ -47,6 +134,21 @@
             color: rgba(255,255,255,0.9);
             font-size: 15px;
             opacity: 0.9;
+        }
+        
+        .lock-button {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .lock-button:hover {
+            background: rgba(255,255,255,0.3);
         }
         
         .ecosystem {
@@ -163,24 +265,24 @@
             text-align: center;
         }
         
-        .hierarchy {
-            display: inline-block;
-            padding: 8px 16px;
-            background: white;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        
         @media (max-width: 768px) {
+            #passwordScreen {
+                padding: 30px 20px;
+            }
+            
             .container {
-                border-radius: 8px;
+                border-radius: 10px;
             }
             
             header {
                 padding: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .lock-button {
+                align-self: flex-end;
             }
             
             .item {
@@ -197,543 +299,683 @@
             .level-2::before { left: 35px; }
             .level-3::before { left: 50px; }
             .level-4::before { left: 65px; }
-            
-            .stats {
-                font-size: 12px;
-                padding: 3px 10px;
-                min-width: 60px;
-            }
-            
-            .title {
-                font-size: 15px;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ECOSYSTEM</h1>
-            <div class="subtitle">Полная структура экосистемы с иерархией</div>
-        </header>
+    <!-- Экран ввода пароля -->
+    <div id="passwordScreen">
+        <h1>🔒 Защищенная структура</h1>
+        <p>Для доступа к структуре экосистемы введите пароль</p>
         
-        <div class="ecosystem">
-            <!-- ECOSYSTEM - корневой уровень -->
-            <div class="item level-0 main" onclick="toggleItem('ecosystem-root', this)">
-                <div class="content">
-                    <span class="title">ECOSYSTEM</span>
-                    <span class="stats completed">5 ✓ 2/12</span>
-                </div>
-                <div class="toggle expanded">▶</div>
-            </div>
-            
-            <div id="ecosystem-root" class="children">
-                <!-- МАГАЗИН -->
-                <div class="item level-1 main" onclick="toggleItem('shop', this)">
-                    <div class="content">
-                        <span class="title">Магазин</span>
-                        <span class="stats completed">1 ✓ 0/11</span>
-                    </div>
-                    <div class="toggle">▶</div>
-                </div>
-                
-                <div id="shop" class="children collapsed">
-                    <!-- Музыкальные инструменты -->
-                    <div class="item level-2" onclick="toggleItem('instruments', this)">
-                        <div class="content">
-                            <span class="title">Музыкальные инструменты</span>
-                            <span class="stats">✓ 0/5</span>
-                        </div>
-                        <div class="toggle">▶</div>
-                    </div>
-                    
-                    <div id="instruments" class="children collapsed">
-                        <!-- Клавишные -->
-                        <div class="item level-3" onclick="toggleItem('keyboards', this)">
-                            <div class="content">
-                                <span class="title">Клавишные</span>
-                                <span class="stats">✓ 0/2</span>
-                            </div>
-                            <div class="toggle">▶</div>
-                        </div>
-                        
-                        <div id="keyboards" class="children collapsed">
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Цифровые пианино</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Синтезаторы</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">MIDI клавиатуры, контроллеры</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Аксессуары</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Гитары, акулеле -->
-                        <div class="item level-3" onclick="toggleItem('guitars', this)">
-                            <div class="content">
-                                <span class="title">Гитары, акулеле</span>
-                            </div>
-                            <div class="toggle">▶</div>
-                        </div>
-                        
-                        <div id="guitars" class="children collapsed">
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Акустические гитары</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Классические гитары</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Акулеле</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Электрогитары</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Бас-гитары</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Струны</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Педали, процессоры эффектов</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Усилители</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Чехлы, кейсы</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Тюнеры, камертоны, метрономы</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Ударные -->
-                        <div class="item level-3" onclick="toggleItem('drums', this)">
-                            <div class="content">
-                                <span class="title">Ударные</span>
-                            </div>
-                            <div class="toggle">▶</div>
-                        </div>
-                        
-                        <div id="drums" class="children collapsed">
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Акустические ударные</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Электронные ударные</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Перкуссия</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Палочки, щётки, колотушки</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Педали</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Стойки, крепления</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Стулья</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Пластики</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Смычковые -->
-                        <div class="item level-3" onclick="toggleItem('bows', this)">
-                            <div class="content">
-                                <span class="title">Смычковые</span>
-                            </div>
-                            <div class="toggle">▶</div>
-                        </div>
-                        
-                        <div id="bows" class="children collapsed">
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Скрипки</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Альты</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Виолончели</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Контрабасы</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Смычки</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Подбородники, мостики</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Струны, канифоль</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Чехлы, кейсы</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Духовые -->
-                        <div class="item level-3" onclick="toggleItem('winds', this)">
-                            <div class="content">
-                                <span class="title">Духовые</span>
-                            </div>
-                            <div class="toggle">▶</div>
-                        </div>
-                        
-                        <div id="winds" class="children collapsed">
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Медные</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Деревянные</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Мундштуки</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Трости</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Лигатуры</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Чехлы, кейсы</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Губные гармошки, мелодики</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Народные, этнические -->
-                        <div class="item level-3" onclick="toggleItem('folk', this)">
-                            <div class="content">
-                                <span class="title">Народные, этнические</span>
-                            </div>
-                            <div class="toggle">▶</div>
-                        </div>
-                        
-                        <div id="folk" class="children collapsed">
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Балалайки</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Домры</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Банджо</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Мандолины</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Гусли</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Аккордеоны</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Баяны</span>
-                                </div>
-                            </div>
-                            <div class="item level-4">
-                                <div class="content">
-                                    <span class="title">Гармони</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Музыкальное оборудование -->
-                    <div class="item level-2" onclick="toggleItem('equipment', this)">
-                        <div class="content">
-                            <span class="title">Музыкальное оборудование</span>
-                        </div>
-                        <div class="toggle">▶</div>
-                    </div>
-                    
-                    <div id="equipment" class="children collapsed">
-                        <!-- Студийное оборудование -->
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Студийное оборудование</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Концертное оборудование -->
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Концертное оборудование</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Домашнее оборудование -->
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Домашнее оборудование</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Музыкальный софт -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Музыкальный софт</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Физические носители -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Физические носители</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Музыкальная литература -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Музыкальная литература</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Новинки -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Новинки (1 мес.)</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Акции -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Акции</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Уценки -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Уцененные товары</span>
-                            <span class="stats">0/3</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- СЕРВИСЫ И УСЛУГИ -->
-                <div class="item level-1 main" onclick="toggleItem('services', this)">
-                    <div class="content">
-                        <span class="title">Сервисы и услуги</span>
-                        <span class="stats">% 0/7</span>
-                    </div>
-                    <div class="toggle">▶</div>
-                </div>
-                
-                <div id="services" class="children">
-                    <!-- Дистрибьюция музыки -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Дистрибьюция музыки</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Дистрибьюция клипов -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Дистрибьюция клипов</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Продвижение -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Продвижение</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Смартлинк -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Смартлинк</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Концерт касса -->
-                    <div class="item level-2">
-                        <div class="content">
-                            <span class="title">Концерт касса</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Издание физических носителей -->
-                    <div class="item level-2" onclick="toggleItem('media', this)">
-                        <div class="content">
-                            <span class="title">Издание физических носителей</span>
-                        </div>
-                        <div class="toggle">▶</div>
-                    </div>
-                    
-                    <div id="media" class="children collapsed">
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Винил</span>
-                            </div>
-                        </div>
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">CD</span>
-                            </div>
-                        </div>
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Кассеты</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Студийные услуги -->
-                    <div class="item level-2" onclick="toggleItem('studio', this)">
-                        <div class="content">
-                            <span class="title">Студийные услуги</span>
-                        </div>
-                        <div class="toggle">▶</div>
-                    </div>
-                    
-                    <div id="studio" class="children collapsed">
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Запись инструментов</span>
-                            </div>
-                        </div>
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Сведение</span>
-                            </div>
-                        </div>
-                        <div class="item level-3">
-                            <div class="content">
-                                <span class="title">Мастеринг</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <input type="password" 
+               id="passwordInput" 
+               class="password-input" 
+               placeholder="Введите пароль"
+               autocomplete="off"
+               onkeypress="handlePasswordKeyPress(event)">
+        
+        <button class="password-button" onclick="checkPassword()">
+            🔓 Разблокировать
+        </button>
+        
+        <div id="errorMessage" class="error-message">
+            Неверный пароль. Попробуйте еще раз.
         </div>
         
-        <footer>
-            <div>Иерархия: ECOSYSTEM → Магазин / Сервисы и услуги → Категории → Подкатегории</div>
-            <div class="hierarchy">
-                ECOSYSTEM<br>
-                ├─ Магазин<br>
-                │  ├─ Музыкальные инструменты<br>
-                │  ├─ Музыкальное оборудование<br>
-                │  └─ ...<br>
-                └─ Сервисы и услуги<br>
-                   ├─ Дистрибьюция<br>
-                   ├─ Продвижение<br>
-                   └─ ...
+        <div class="attempts">
+            Осталось попыток: <span id="attemptsCount">3</span>
+        </div>
+        
+        <div style="margin-top: 25px; font-size: 13px; color: #cbd5e0;">
+            <div>💡 Подсказка: Пароль состоит из 4 цифр</div>
+            <div style="margin-top: 5px;">Введите 4-значный числовой код</div>
+        </div>
+    </div>
+    
+    <!-- Основной контент (скрыт до ввода пароля) -->
+    <div id="mainContainer">
+        <div class="container">
+            <header>
+                <div>
+                    <h1>ECOSYSTEM</h1>
+                    <div class="subtitle">Защищенная структура экосистемы</div>
+                </div>
+                <button class="lock-button" onclick="lockScreen()">
+                    🔒 Заблокировать
+                </button>
+            </header>
+            
+            <div class="ecosystem">
+                <!-- ECOSYSTEM - корневой уровень -->
+                <div class="item level-0 main" onclick="toggleItem('ecosystem-root', this)">
+                    <div class="content">
+                        <span class="title">ECOSYSTEM</span>
+                        <span class="stats completed">5 ✓ 2/12</span>
+                    </div>
+                    <div class="toggle expanded">▶</div>
+                </div>
+                
+                <div id="ecosystem-root" class="children">
+                    <!-- МАГАЗИН -->
+                    <div class="item level-1 main" onclick="toggleItem('shop', this)">
+                        <div class="content">
+                            <span class="title">Магазин</span>
+                            <span class="stats completed">1 ✓ 0/11</span>
+                        </div>
+                        <div class="toggle">▶</div>
+                    </div>
+                    
+                    <div id="shop" class="children collapsed">
+                        <!-- Музыкальные инструменты -->
+                        <div class="item level-2" onclick="toggleItem('instruments', this)">
+                            <div class="content">
+                                <span class="title">Музыкальные инструменты</span>
+                                <span class="stats">✓ 0/5</span>
+                            </div>
+                            <div class="toggle">▶</div>
+                        </div>
+                        
+                        <div id="instruments" class="children collapsed">
+                            <!-- Клавишные -->
+                            <div class="item level-3" onclick="toggleItem('keyboards', this)">
+                                <div class="content">
+                                    <span class="title">Клавишные</span>
+                                    <span class="stats">✓ 0/2</span>
+                                </div>
+                                <div class="toggle">▶</div>
+                            </div>
+                            
+                            <div id="keyboards" class="children collapsed">
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Цифровые пианино</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Синтезаторы</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">MIDI клавиатуры, контроллеры</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Аксессуары</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Гитары, акулеле -->
+                            <div class="item level-3" onclick="toggleItem('guitars', this)">
+                                <div class="content">
+                                    <span class="title">Гитары, акулеле</span>
+                                </div>
+                                <div class="toggle">▶</div>
+                            </div>
+                            
+                            <div id="guitars" class="children collapsed">
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Акустические гитары</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Классические гитары</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Акулеле</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Электрогитары</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Бас-гитары</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Струны</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Педали, процессоры эффектов</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Усилители</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Чехлы, кейсы</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Тюнеры, камертоны, метрономы</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Ударные -->
+                            <div class="item level-3" onclick="toggleItem('drums', this)">
+                                <div class="content">
+                                    <span class="title">Ударные</span>
+                                </div>
+                                <div class="toggle">▶</div>
+                            </div>
+                            
+                            <div id="drums" class="children collapsed">
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Акустические ударные</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Электронные ударные</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Перкуссия</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Палочки, щётки, колотушки</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Педали</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Стойки, крепления</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Стулья</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Пластики</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Смычковые -->
+                            <div class="item level-3" onclick="toggleItem('bows', this)">
+                                <div class="content">
+                                    <span class="title">Смычковые</span>
+                                </div>
+                                <div class="toggle">▶</div>
+                            </div>
+                            
+                            <div id="bows" class="children collapsed">
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Скрипки</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Альты</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Виолончели</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Контрабасы</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Смычки</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Подбородники, мостики</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Струны, канифоль</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Чехлы, кейсы</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Духовые -->
+                            <div class="item level-3" onclick="toggleItem('winds', this)">
+                                <div class="content">
+                                    <span class="title">Духовые</span>
+                                </div>
+                                <div class="toggle">▶</div>
+                            </div>
+                            
+                            <div id="winds" class="children collapsed">
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Медные</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Деревянные</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Мундштуки</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Трости</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Лигатуры</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Чехлы, кейсы</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Губные гармошки, мелодики</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Народные, этнические -->
+                            <div class="item level-3" onclick="toggleItem('folk', this)">
+                                <div class="content">
+                                    <span class="title">Народные, этнические</span>
+                                </div>
+                                <div class="toggle">▶</div>
+                            </div>
+                            
+                            <div id="folk" class="children collapsed">
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Балалайки</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Домры</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Банджо</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Мандолины</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Гусли</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Аккордеоны</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Баяны</span>
+                                    </div>
+                                </div>
+                                <div class="item level-4">
+                                    <div class="content">
+                                        <span class="title">Гармони</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Музыкальное оборудование -->
+                        <div class="item level-2" onclick="toggleItem('equipment', this)">
+                            <div class="content">
+                                <span class="title">Музыкальное оборудование</span>
+                            </div>
+                            <div class="toggle">▶</div>
+                        </div>
+                        
+                        <div id="equipment" class="children collapsed">
+                            <!-- Студийное оборудование -->
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Студийное оборудование</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Концертное оборудование -->
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Концертное оборудование</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Домашнее оборудование -->
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Домашнее оборудование</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Музыкальный софт -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Музыкальный софт</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Физические носители -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Физические носители</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Музыкальная литература -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Музыкальная литература</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Новинки -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Новинки (1 мес.)</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Акции -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Акции</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Уценки -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Уцененные товары</span>
+                                <span class="stats">0/3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- СЕРВИСЫ И УСЛУГИ -->
+                    <div class="item level-1 main" onclick="toggleItem('services', this)">
+                        <div class="content">
+                            <span class="title">Сервисы и услуги</span>
+                            <span class="stats">% 0/7</span>
+                        </div>
+                        <div class="toggle">▶</div>
+                    </div>
+                    
+                    <div id="services" class="children">
+                        <!-- Дистрибьюция музыки -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Дистрибьюция музыки</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Дистрибьюция клипов -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Дистрибьюция клипов</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Продвижение -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Продвижение</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Смартлинк -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Смартлинк</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Концерт касса -->
+                        <div class="item level-2">
+                            <div class="content">
+                                <span class="title">Концерт касса</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Издание физических носителей -->
+                        <div class="item level-2" onclick="toggleItem('media', this)">
+                            <div class="content">
+                                <span class="title">Издание физических носителей</span>
+                            </div>
+                            <div class="toggle">▶</div>
+                        </div>
+                        
+                        <div id="media" class="children collapsed">
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Винил</span>
+                                </div>
+                            </div>
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">CD</span>
+                                </div>
+                            </div>
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Кассеты</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Студийные услуги -->
+                        <div class="item level-2" onclick="toggleItem('studio', this)">
+                            <div class="content">
+                                <span class="title">Студийные услуги</span>
+                            </div>
+                            <div class="toggle">▶</div>
+                        </div>
+                        
+                        <div id="studio" class="children collapsed">
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Запись инструментов</span>
+                                </div>
+                            </div>
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Сведение</span>
+                                </div>
+                            </div>
+                            <div class="item level-3">
+                                <div class="content">
+                                    <span class="title">Мастеринг</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
+            
+            <footer>
+                <div>Защищенный доступ | Автоматическая блокировка через 30 минут</div>
+            </footer>
+        </div>
     </div>
 
     <script>
-        // Функция для переключения видимости дочерних элементов
+        // 🔐 ПАРОЛЬ (измените на свой!)
+        const CORRECT_PASSWORD = "2024"; // Меняйте этот пароль!
+        const MAX_ATTEMPTS = 3;
+        
+        let attempts = MAX_ATTEMPTS;
+        let unlockTime = null;
+        const LOCK_TIMEOUT = 30 * 60 * 1000; // 30 минут
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAttemptsDisplay();
+            
+            // Проверяем, не истекло ли время сессии
+            const savedUnlockTime = localStorage.getItem('ecosystemUnlockTime');
+            if (savedUnlockTime) {
+                const timeSinceUnlock = Date.now() - parseInt(savedUnlockTime);
+                if (timeSinceUnlock < LOCK_TIMEOUT) {
+                    // Сессия еще активна, показываем содержимое
+                    showMainContent();
+                } else {
+                    // Время истекло, очищаем
+                    localStorage.removeItem('ecosystemUnlockTime');
+                }
+            }
+        });
+        
+        // Проверка пароля
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('errorMessage');
+            const password = input.value;
+            
+            if (password === CORRECT_PASSWORD) {
+                // Правильный пароль
+                unlockTime = Date.now();
+                localStorage.setItem('ecosystemUnlockTime', unlockTime.toString());
+                showMainContent();
+            } else {
+                // Неверный пароль
+                attempts--;
+                updateAttemptsDisplay();
+                
+                if (attempts <= 0) {
+                    // Блокировка приложения
+                    input.disabled = true;
+                    error.textContent = '❌ Доступ заблокирован. Обновите страницу через 5 минут.';
+                    error.style.display = 'block';
+                    document.querySelector('.password-button').disabled = true;
+                    
+                    // Автоматическая разблокировка через 5 минут
+                    setTimeout(() => {
+                        location.reload();
+                    }, 5 * 60 * 1000);
+                } else {
+                    error.style.display = 'block';
+                    input.value = '';
+                    input.focus();
+                    
+                    // Виброэффект при ошибке
+                    input.style.animation = 'none';
+                    setTimeout(() => {
+                        input.style.animation = 'shake 0.5s';
+                    }, 10);
+                }
+            }
+        }
+        
+        // Обработка нажатия Enter в поле пароля
+        function handlePasswordKeyPress(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        }
+        
+        // Показать основной контент
+        function showMainContent() {
+            document.getElementById('passwordScreen').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+            
+            // Инициализация структуры
+            document.getElementById('ecosystem-root').classList.remove('collapsed');
+            
+            // Автоматическая блокировка через LOCK_TIMEOUT
+            setTimeout(() => {
+                if (document.getElementById('mainContainer').style.display !== 'none') {
+                    lockScreen();
+                }
+            }, LOCK_TIMEOUT);
+        }
+        
+        // Блокировка экрана
+        function lockScreen() {
+            localStorage.removeItem('ecosystemUnlockTime');
+            document.getElementById('mainContainer').style.display = 'none';
+            document.getElementById('passwordScreen').style.display = 'block';
+            
+            // Сброс состояния
+            attempts = MAX_ATTEMPTS;
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('passwordInput').disabled = false;
+            document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.password-button').disabled = false;
+            updateAttemptsDisplay();
+            
+            document.getElementById('passwordInput').focus();
+        }
+        
+        // Обновление отображения попыток
+        function updateAttemptsDisplay() {
+            document.getElementById('attemptsCount').textContent = attempts;
+        }
+        
+        // Анимация тряски для поля ввода
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Функция для переключения видимости дочерних элементов структуры
         function toggleItem(elementId, clickedElement) {
             const element = document.getElementById(elementId);
             const toggle = clickedElement.querySelector('.toggle');
@@ -748,20 +990,6 @@
                 toggle.classList.remove('expanded');
             }
         }
-        
-        // Инициализация состояния
-        document.addEventListener('DOMContentLoaded', function() {
-            // Автоматически разворачиваем корневой уровень
-            document.getElementById('ecosystem-root').classList.remove('collapsed');
-            
-            // Добавляем обработчики для всех элементов с классом item, у которых есть toggle
-            document.querySelectorAll('.item').forEach(item => {
-                // Проверяем, есть ли внутри toggle
-                if (item.querySelector('.toggle')) {
-                    item.style.cursor = 'pointer';
-                }
-            });
-        });
     </script>
 </body>
 </html>

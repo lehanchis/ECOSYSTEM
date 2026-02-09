@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Структура экосистемы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #2d3748;
+            color: white;
+            padding: 20px 25px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .structure {
+            padding: 0;
+        }
+        
+        .category, .item {
+            padding: 12px 25px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .item {
+            padding-left: 50px;
+        }
+        
+        .sub-item {
+            padding-left: 75px;
+        }
+        
+        .sub-sub-item {
+            padding-left: 100px;
+        }
+        
+        .bullet {
+            margin-right: 12px;
+            color: #9ca3af;
+            font-size: 18px;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .content {
+            flex: 1;
+        }
+        
+        .title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        
+        .subtitle {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+        
+        .stats {
+            margin-left: auto;
+            padding-left: 15px;
+            font-size: 13px;
+            color: #6b7280;
+            white-space: nowrap;
+        }
+        
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 3px;
+            margin-right: 12px;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .checkbox.checked {
+            background: #10b981;
+            border-color: #10b981;
+        }
+        
+        .checkbox.checked::after {
+            content: "✓";
+            color: white;
+            font-size: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .price {
+            color: #059669;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        
+        .category:hover, .item:hover {
+            background: #f9fafb;
+        }
+        
+        .icon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .services {
+            background: #f0f9ff;
+            border-left: 3px solid #0369a1;
+        }
+        
+        .services .title {
+            color: #0369a1;
+        }
+        
+        footer {
+            padding: 15px 25px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                border-radius: 6px;
+            }
+            
+            header, .category, .item {
+                padding: 10px 15px;
+            }
+            
+            .item {
+                padding-left: 30px;
+            }
+            
+            .sub-item {
+                padding-left: 45px;
+            }
+            
+            .sub-sub-item {
+                padding-left: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Структура экосистемы</h1>
+        </header>
+        
+        <div class="structure">
+            <!-- ECOSYSTEM -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">ECOSYSTEM</div>
+                </div>
+                <div class="stats">1 ✓ 0/2</div>
+            </div>
+            
+            <!-- Магазин -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">Магазин</div>
+                </div>
+                <div class="stats">1 ✓ 0/11</div>
+            </div>
+            
+            <!-- Музыкальные инструменты -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">Музыкальные инструменты</div>
+                </div>
+                <div class="stats">✓ 0/5</div>
+            </div>
+            
+            <!-- Клавишные -->
+            <div class="item">
+                <div class="bullet">-</div>
+                <div class="content">
+                    <div class="title">Клавишные</div>
+                </div>
+                <div class="stats">✓ 0/2</div>
+            </div>
+            
+            <!-- Акустические -->
+            <div class="item sub-item">
+                <div class="bullet">◦</div>
+                <div class="content">
+                    <div class="title">Акустические</div>
+                </div>
+            </div>
+            
+            <!-- Электронные -->
+            <div class="item sub-item">
+                <div class="bullet">◦</div>
+                <div class="content">
+                    <div class="title">Электронные</div>
+                </div>
+            </div>
+            
+            <!-- Струнные -->
+            <div class="item">
+                <div class="bullet">-</div>
+                <div class="content">
+                    <div class="title">Струнные</div>
+                </div>
+            </div>
+            
+            <!-- Ударные -->
+            <div class="item">
+                <div class="bullet">-</div>
+                <div class="content">
+                    <div class="title">Ударные</div>
+                </div>
+            </div>
+            
+            <!-- Духовые -->
+            <div class="item">
+                <div class="bullet">-</div>
+                <div class="content">
+                    <div class="title">Духовые</div>
+                </div>
+            </div>
+            
+            <!-- Аксессуары для музыкантов -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">Аксессуары для музыкантов</div>
+                </div>
+            </div>
+            
+            <!-- Аудиооборудование -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">Аудиооборудование</div>
+                </div>
+                <div class="stats">✓ 0/2</div>
+            </div>
+            
+            <!-- Акустические системы -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Акустические системы</div>
+                </div>
+            </div>
+            
+            <!-- Наушники и гарнитуры -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Наушники и гарнитуры</div>
+                </div>
+            </div>
+            
+            <!-- Световое оборудование -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Световое оборудование</div>
+                </div>
+            </div>
+            
+            <!-- Софт -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">Софт</div>
+                </div>
+                <div class="stats">1</div>
+            </div>
+            
+            <!-- Программа 1 -->
+            <div class="item">
+                <div class="checkbox checked"></div>
+                <div class="content">
+                    <div class="title">1</div>
+                </div>
+            </div>
+            
+            <!-- Физические носители -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Физические носители</div>
+                </div>
+            </div>
+            
+            <!-- Литература -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Литература</div>
+                </div>
+            </div>
+            
+            <!-- Мерч и сувениры -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Мерч и сувениры</div>
+                </div>
+            </div>
+            
+            <!-- Новинки (1 мес.) -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Новинки (1 мес.)</div>
+                </div>
+            </div>
+            
+            <!-- Акции -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Акции</div>
+                </div>
+            </div>
+            
+            <!-- Выгодные комплекты -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">Выгодные комплекты</div>
+                </div>
+                <div class="stats">0/2</div>
+            </div>
+            
+            <!-- Гитарные -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Гитарные</div>
+                </div>
+            </div>
+            
+            <!-- Автозвук -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Автозвук</div>
+                </div>
+            </div>
+            
+            <!-- Уцененные товары -->
+            <div class="category">
+                <div class="bullet">•</div>
+                <div class="content">
+                    <div class="title">Уцененные товары</div>
+                </div>
+                <div class="stats">0/3</div>
+            </div>
+            
+            <!-- Beyerdynamic DT 770 PRO 250 Ohm -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">Beyerdynamic DT 770 PRO 250 Ohm</div>
+                    <div class="price">~ 7 590 руб.</div>
+                </div>
+            </div>
+            
+            <!-- AKAI MPK Mini MK3 -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">AKAI MPK Mini MK3</div>
+                    <div class="price">~ 5 290 руб.</div>
+                </div>
+            </div>
+            
+            <!-- sE Electronics sE7 Pair -->
+            <div class="item">
+                <div class="checkbox"></div>
+                <div class="content">
+                    <div class="title">sE Electronics sE7 Pair</div>
+                    <div class="price">~ 14 650 руб.</div>
+                </div>
+            </div>
+            
+            <!-- Сервисы и услуги -->
+            <div class="category services">
+                <div class="icon">⚙️</div>
+                <div class="content">
+                    <div class="title">Сервисы и услуги</div>
+                </div>
+                <div class="stats">% 0/7</div>
+            </div>
+            
+            <!-- Дистрибьюторы музыки и клипов -->
+            <div class="item services">
+                <div class="icon">📊</div>
+                <div class="content">
+                    <div class="title">Дистрибьюторы музыки и клипов</div>
+                </div>
+                <div class="stats">❌ 1</div>
+            </div>
+            
+            <!-- Издание физических носителей -->
+            <div class="item services">
+                <div class="icon">💿</div>
+                <div class="content">
+                    <div class="title">Издание физических носителей</div>
+                </div>
+            </div>
+            
+            <!-- Организация концертов, туров и фестивалей -->
+            <div class="item services">
+                <div class="icon">🎤</div>
+                <div class="content">
+                    <div class="title">Организация концертов, туров и фестивалей</div>
+                </div>
+            </div>
+            
+            <!-- Смартлинк -->
+            <div class="item services">
+                <div class="icon">🔗</div>
+                <div class="content">
+                    <div class="title">Смартлинк</div>
+                </div>
+            </div>
+            
+            <!-- Продвижение -->
+            <div class="item services">
+                <div class="icon">📈</div>
+                <div class="content">
+                    <div class="title">Продвижение</div>
+                </div>
+            </div>
+            
+            <!-- Студийные услуги -->
+            <div class="item services">
+                <div class="icon">🎧</div>
+                <div class="content">
+                    <div class="title">Студийные услуги</div>
+                </div>
+            </div>
+            
+            <!-- Release Alerts -->
+            <div class="item services">
+                <div class="icon">🔔</div>
+                <div class="content">
+                    <div class="title">Release Alerts</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div>Всего элементов: 38 | Сверстано: <span id="currentDate"></span></div>
+        </footer>
+    </div>
+
+    <script>
+        // Установка текущей даты
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('ru-RU');
+        
+        // Обработка кликов на чекбоксы
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                
+                // Обновляем родительскую статистику, если есть
+                updateParentStats(this);
+            });
+        });
+        
+        function updateParentStats(checkbox) {
+            // Находим ближайший родительский элемент с классом category
+            let parentCategory = checkbox.closest('.item')?.previousElementSibling;
+            while (parentCategory && !parentCategory.classList.contains('category')) {
+                parentCategory = parentCategory.previousElementSibling;
+            }
+            
+            if (parentCategory) {
+                const statsElement = parentCategory.querySelector('.stats');
+                if (statsElement) {
+                    // Простая логика обновления статистики
+                    const currentText = statsElement.textContent;
+                    const match = currentText.match(/(\d+)\s*[✓❌%]?\s*\/\s*(\d+)/);
+                    
+                    if (match) {
+                        let completed = parseInt(match[1]);
+                        const total = parseInt(match[2]);
+                        
+                        if (checkbox.classList.contains('checked')) {
+                            completed = Math.min(completed + 1, total);
+                        } else {
+                            completed = Math.max(completed - 1, 0);
+                        }
+                        
+                        // Обновляем текст
+                        const prefix = currentText.match(/^[✓❌%]?\s*/)[0] || '';
+                        statsElement.textContent = `${prefix}${completed}/${total}`;
+                    }
+                }
+            }
+        }
+        
+        // Инициализация проверенных чекбоксов
+        document.querySelectorAll('.checkbox.checked').forEach(checkbox => {
+            updateParentStats(checkbox);
+        });
+    </script>
+</body>
+</html>

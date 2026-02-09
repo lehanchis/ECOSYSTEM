@@ -15,165 +15,228 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f5f5f5;
+            background: #f8fafc;
             min-height: 100vh;
             padding: 20px;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             overflow: hidden;
         }
         
         header {
-            background: #2d3748;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             color: white;
-            padding: 20px 25px;
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         h1 {
-            font-size: 24px;
-            font-weight: 600;
-        }
-        
-        .structure {
-            padding: 0;
-        }
-        
-        .category, .item {
-            padding: 12px 25px;
-            border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .item {
-            padding-left: 50px;
-        }
-        
-        .sub-item {
-            padding-left: 75px;
-        }
-        
-        .sub-sub-item {
-            padding-left: 100px;
-        }
-        
-        .bullet {
-            margin-right: 12px;
-            color: #9ca3af;
-            font-size: 18px;
-            min-width: 20px;
-            text-align: center;
-        }
-        
-        .content {
-            flex: 1;
-        }
-        
-        .title {
-            font-weight: 600;
-            font-size: 15px;
-            margin-bottom: 4px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
         }
         
         .subtitle {
-            font-size: 13px;
-            color: #6b7280;
-            margin-top: 2px;
+            color: rgba(255,255,255,0.9);
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        
+        .ecosystem {
+            padding: 0;
+        }
+        
+        /* Уровни иерархии */
+        .level-0 { padding-left: 25px; }
+        .level-1 { padding-left: 45px; border-left: 2px solid #dbeafe; }
+        .level-2 { padding-left: 65px; border-left: 2px solid #e0e7ff; }
+        .level-3 { padding-left: 85px; border-left: 2px solid #ede9fe; }
+        .level-4 { padding-left: 105px; border-left: 2px solid #f3f4f6; }
+        
+        .item {
+            padding: 14px 20px;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+            position: relative;
+        }
+        
+        .item:hover {
+            background: #f8fafc;
+        }
+        
+        .item.main {
+            background: #eff6ff;
+            border-bottom: 2px solid #3b82f6;
+            font-weight: 600;
+        }
+        
+        .item.sub {
+            background: #f8fafc;
+        }
+        
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .indicator.main { background: #3b82f6; }
+        .indicator.shop { background: #10b981; }
+        .indicator.services { background: #8b5cf6; }
+        .indicator.category { background: #f59e0b; }
+        .indicator.subcategory { background: #ef4444; }
+        .indicator.item { background: #94a3b8; }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .title {
+            font-size: 15px;
+            color: #1e293b;
+        }
+        
+        .item.main .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e40af;
         }
         
         .stats {
-            margin-left: auto;
-            padding-left: 15px;
             font-size: 13px;
-            color: #6b7280;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-left: 15px;
+            min-width: 70px;
+            text-align: center;
             white-space: nowrap;
         }
         
-        .checkbox {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #d1d5db;
-            border-radius: 3px;
-            margin-right: 12px;
+        .stats.completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .toggle {
+            margin-left: 10px;
+            color: #94a3b8;
             cursor: pointer;
-            position: relative;
-            flex-shrink: 0;
-            margin-top: 2px;
+            font-size: 12px;
+            transition: transform 0.3s;
+            width: 20px;
+            text-align: center;
         }
         
-        .checkbox.checked {
+        .toggle.expanded {
+            transform: rotate(90deg);
+            color: #3b82f6;
+        }
+        
+        .children {
+            display: block;
+        }
+        
+        .children.collapsed {
+            display: none;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .progress {
+            display: inline-block;
+            width: 60px;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            margin-left: 10px;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
             background: #10b981;
-            border-color: #10b981;
-        }
-        
-        .checkbox.checked::after {
-            content: "✓";
-            color: white;
-            font-size: 10px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            border-radius: 3px;
+            transition: width 0.5s ease;
         }
         
         .price {
             color: #059669;
             font-size: 14px;
             margin-top: 2px;
+            font-weight: 500;
         }
         
-        .category:hover, .item:hover {
-            background: #f9fafb;
-        }
-        
-        .icon {
-            margin-right: 8px;
+        .empty {
+            font-style: italic;
+            color: #94a3b8;
+            padding: 20px;
+            text-align: center;
             font-size: 14px;
         }
         
-        .services {
-            background: #f0f9ff;
-            border-left: 3px solid #0369a1;
-        }
-        
-        .services .title {
-            color: #0369a1;
-        }
-        
         footer {
-            padding: 15px 25px;
-            background: #f9fafb;
-            border-top: 1px solid #e5e7eb;
-            color: #6b7280;
-            font-size: 12px;
+            padding: 20px 30px;
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 14px;
             text-align: center;
         }
         
-        @media (max-width: 640px) {
+        .hierarchy {
+            display: inline-block;
+            padding: 8px 16px;
+            background: white;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        @media (max-width: 768px) {
             .container {
-                border-radius: 6px;
+                border-radius: 8px;
             }
             
-            header, .category, .item {
-                padding: 10px 15px;
+            header {
+                padding: 20px;
             }
             
             .item {
-                padding-left: 30px;
+                padding: 12px 15px;
             }
             
-            .sub-item {
-                padding-left: 45px;
-            }
+            .level-0 { padding-left: 15px; }
+            .level-1 { padding-left: 30px; }
+            .level-2 { padding-left: 45px; }
+            .level-3 { padding-left: 60px; }
+            .level-4 { padding-left: 75px; }
             
-            .sub-sub-item {
-                padding-left: 60px;
+            .stats {
+                font-size: 11px;
+                padding: 2px 8px;
+                min-width: 60px;
             }
         }
     </style>
@@ -181,366 +244,633 @@
 <body>
     <div class="container">
         <header>
-            <h1>Структура экосистемы</h1>
+            <h1>ECOSYSTEM</h1>
+            <div class="subtitle">Полная структура экосистемы с иерархией</div>
         </header>
         
-        <div class="structure">
-            <!-- ECOSYSTEM -->
-            <div class="category">
-                <div class="bullet">•</div>
+        <div class="ecosystem">
+            <!-- ECOSYSTEM - корневой уровень -->
+            <div class="item level-0 main">
+                <div class="indicator main"></div>
                 <div class="content">
-                    <div class="title">ECOSYSTEM</div>
+                    <span class="title">ECOSYSTEM</span>
+                    <span class="stats completed">5 ✓ 2/12</span>
                 </div>
-                <div class="stats">1 ✓ 0/2</div>
+                <div class="toggle" onclick="toggleChildren('ecosystem-root')">▶</div>
             </div>
             
-            <!-- Магазин -->
-            <div class="category">
-                <div class="bullet">•</div>
-                <div class="content">
-                    <div class="title">Магазин</div>
+            <div id="ecosystem-root" class="children">
+                <!-- МАГАЗИН -->
+                <div class="item level-1 main">
+                    <div class="indicator shop"></div>
+                    <div class="content">
+                        <span class="title">Магазин</span>
+                        <span class="stats completed">1 ✓ 0/11</span>
+                    </div>
+                    <div class="toggle" onclick="toggleChildren('shop')">▶</div>
                 </div>
-                <div class="stats">1 ✓ 0/11</div>
-            </div>
-            
-            <!-- Музыкальные инструменты -->
-            <div class="category">
-                <div class="bullet">•</div>
-                <div class="content">
-                    <div class="title">Музыкальные инструменты</div>
+                
+                <div id="shop" class="children">
+                    <!-- Музыкальные инструменты -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Музыкальные инструменты</span>
+                            <span class="stats">✓ 0/5</span>
+                        </div>
+                        <div class="toggle" onclick="toggleChildren('instruments')">▶</div>
+                    </div>
+                    
+                    <div id="instruments" class="children collapsed">
+                        <!-- Клавишные -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Клавишные</span>
+                                <span class="stats">✓ 0/2</span>
+                            </div>
+                            <div class="toggle" onclick="toggleChildren('keyboards')">▶</div>
+                        </div>
+                        
+                        <div id="keyboards" class="children collapsed">
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Цифровые пианино</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Синтезаторы</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">MIDI клавиатуры, контроллеры</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Аксессуары</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Гитары, акулеле -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Гитары, акулеле</span>
+                            </div>
+                            <div class="toggle" onclick="toggleChildren('guitars')">▶</div>
+                        </div>
+                        
+                        <div id="guitars" class="children collapsed">
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Акустические гитары</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Классические гитары</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Акулеле</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Электрогитары</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Бас-гитары</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Струны</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Педали, процессоры эффектов</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Усилители</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Чехлы, кейсы</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Тюнеры, камертоны, метрономы</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Ударные -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Ударные</span>
+                            </div>
+                            <div class="toggle" onclick="toggleChildren('drums')">▶</div>
+                        </div>
+                        
+                        <div id="drums" class="children collapsed">
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Акустические ударные</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Электронные ударные</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Перкуссия</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Палочки, щётки, колотушки</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Педали</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Стойки, крепления</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Стулья</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Пластики</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Смычковые -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Смычковые</span>
+                            </div>
+                            <div class="toggle" onclick="toggleChildren('bows')">▶</div>
+                        </div>
+                        
+                        <div id="bows" class="children collapsed">
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Скрипки</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Альты</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Виолончели</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Контрабасы</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Смычки</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Подбородники, мостики</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Струны, канифоль</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Чехлы, кейсы</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Духовые -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Духовые</span>
+                            </div>
+                            <div class="toggle" onclick="toggleChildren('winds')">▶</div>
+                        </div>
+                        
+                        <div id="winds" class="children collapsed">
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Медные</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Деревянные</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Мундштуки</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Трости</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Лигатуры</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Чехлы, кейсы</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Губные гармошки, мелодики</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Народные, этнические -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Народные, этнические</span>
+                            </div>
+                            <div class="toggle" onclick="toggleChildren('folk')">▶</div>
+                        </div>
+                        
+                        <div id="folk" class="children collapsed">
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Балалайки</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Домры</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Банджо</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Мандолины</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Гусли</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Аккордеоны</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Баяны</span>
+                                </div>
+                            </div>
+                            <div class="item level-4">
+                                <div class="indicator item"></div>
+                                <div class="content">
+                                    <span class="title">Гармони</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Музыкальное оборудование -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Музыкальное оборудование</span>
+                        </div>
+                        <div class="toggle" onclick="toggleChildren('equipment')">▶</div>
+                    </div>
+                    
+                    <div id="equipment" class="children collapsed">
+                        <!-- Студийное оборудование -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Студийное оборудование</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Концертное оборудование -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Концертное оборудование</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Домашнее оборудование -->
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Домашнее оборудование</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Музыкальный софт -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Музыкальный софт</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Физические носители -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Физические носители</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Музыкальная литература -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Музыкальная литература</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Новинки -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Новинки (1 мес.)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Акции -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Акции</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Уценки -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Уцененные товары</span>
+                            <span class="stats">0/3</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="stats">✓ 0/5</div>
-            </div>
-            
-            <!-- Клавишные -->
-            <div class="item">
-                <div class="bullet">-</div>
-                <div class="content">
-                    <div class="title">Клавишные</div>
+                
+                <!-- СЕРВИСЫ И УСЛУГИ -->
+                <div class="item level-1 main">
+                    <div class="indicator services"></div>
+                    <div class="content">
+                        <span class="title">Сервисы и услуги</span>
+                        <span class="stats">% 0/7</span>
+                    </div>
+                    <div class="toggle" onclick="toggleChildren('services')">▶</div>
                 </div>
-                <div class="stats">✓ 0/2</div>
-            </div>
-            
-            <!-- Акустические -->
-            <div class="item sub-item">
-                <div class="bullet">◦</div>
-                <div class="content">
-                    <div class="title">Акустические</div>
-                </div>
-            </div>
-            
-            <!-- Электронные -->
-            <div class="item sub-item">
-                <div class="bullet">◦</div>
-                <div class="content">
-                    <div class="title">Электронные</div>
-                </div>
-            </div>
-            
-            <!-- Струнные -->
-            <div class="item">
-                <div class="bullet">-</div>
-                <div class="content">
-                    <div class="title">Струнные</div>
-                </div>
-            </div>
-            
-            <!-- Ударные -->
-            <div class="item">
-                <div class="bullet">-</div>
-                <div class="content">
-                    <div class="title">Ударные</div>
-                </div>
-            </div>
-            
-            <!-- Духовые -->
-            <div class="item">
-                <div class="bullet">-</div>
-                <div class="content">
-                    <div class="title">Духовые</div>
-                </div>
-            </div>
-            
-            <!-- Аксессуары для музыкантов -->
-            <div class="category">
-                <div class="bullet">•</div>
-                <div class="content">
-                    <div class="title">Аксессуары для музыкантов</div>
-                </div>
-            </div>
-            
-            <!-- Аудиооборудование -->
-            <div class="category">
-                <div class="bullet">•</div>
-                <div class="content">
-                    <div class="title">Аудиооборудование</div>
-                </div>
-                <div class="stats">✓ 0/2</div>
-            </div>
-            
-            <!-- Акустические системы -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Акустические системы</div>
-                </div>
-            </div>
-            
-            <!-- Наушники и гарнитуры -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Наушники и гарнитуры</div>
-                </div>
-            </div>
-            
-            <!-- Световое оборудование -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Световое оборудование</div>
-                </div>
-            </div>
-            
-            <!-- Софт -->
-            <div class="category">
-                <div class="bullet">•</div>
-                <div class="content">
-                    <div class="title">Софт</div>
-                </div>
-                <div class="stats">1</div>
-            </div>
-            
-            <!-- Программа 1 -->
-            <div class="item">
-                <div class="checkbox checked"></div>
-                <div class="content">
-                    <div class="title">1</div>
-                </div>
-            </div>
-            
-            <!-- Физические носители -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Физические носители</div>
-                </div>
-            </div>
-            
-            <!-- Литература -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Литература</div>
-                </div>
-            </div>
-            
-            <!-- Мерч и сувениры -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Мерч и сувениры</div>
-                </div>
-            </div>
-            
-            <!-- Новинки (1 мес.) -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Новинки (1 мес.)</div>
-                </div>
-            </div>
-            
-            <!-- Акции -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Акции</div>
-                </div>
-            </div>
-            
-            <!-- Выгодные комплекты -->
-            <div class="category">
-                <div class="bullet">•</div>
-                <div class="content">
-                    <div class="title">Выгодные комплекты</div>
-                </div>
-                <div class="stats">0/2</div>
-            </div>
-            
-            <!-- Гитарные -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Гитарные</div>
-                </div>
-            </div>
-            
-            <!-- Автозвук -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Автозвук</div>
-                </div>
-            </div>
-            
-            <!-- Уцененные товары -->
-            <div class="category">
-                <div class="bullet">•</div>
-                <div class="content">
-                    <div class="title">Уцененные товары</div>
-                </div>
-                <div class="stats">0/3</div>
-            </div>
-            
-            <!-- Beyerdynamic DT 770 PRO 250 Ohm -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">Beyerdynamic DT 770 PRO 250 Ohm</div>
-                    <div class="price">~ 7 590 руб.</div>
-                </div>
-            </div>
-            
-            <!-- AKAI MPK Mini MK3 -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">AKAI MPK Mini MK3</div>
-                    <div class="price">~ 5 290 руб.</div>
-                </div>
-            </div>
-            
-            <!-- sE Electronics sE7 Pair -->
-            <div class="item">
-                <div class="checkbox"></div>
-                <div class="content">
-                    <div class="title">sE Electronics sE7 Pair</div>
-                    <div class="price">~ 14 650 руб.</div>
-                </div>
-            </div>
-            
-            <!-- Сервисы и услуги -->
-            <div class="category services">
-                <div class="icon">⚙️</div>
-                <div class="content">
-                    <div class="title">Сервисы и услуги</div>
-                </div>
-                <div class="stats">% 0/7</div>
-            </div>
-            
-            <!-- Дистрибьюторы музыки и клипов -->
-            <div class="item services">
-                <div class="icon">📊</div>
-                <div class="content">
-                    <div class="title">Дистрибьюторы музыки и клипов</div>
-                </div>
-                <div class="stats">❌ 1</div>
-            </div>
-            
-            <!-- Издание физических носителей -->
-            <div class="item services">
-                <div class="icon">💿</div>
-                <div class="content">
-                    <div class="title">Издание физических носителей</div>
-                </div>
-            </div>
-            
-            <!-- Организация концертов, туров и фестивалей -->
-            <div class="item services">
-                <div class="icon">🎤</div>
-                <div class="content">
-                    <div class="title">Организация концертов, туров и фестивалей</div>
-                </div>
-            </div>
-            
-            <!-- Смартлинк -->
-            <div class="item services">
-                <div class="icon">🔗</div>
-                <div class="content">
-                    <div class="title">Смартлинк</div>
-                </div>
-            </div>
-            
-            <!-- Продвижение -->
-            <div class="item services">
-                <div class="icon">📈</div>
-                <div class="content">
-                    <div class="title">Продвижение</div>
-                </div>
-            </div>
-            
-            <!-- Студийные услуги -->
-            <div class="item services">
-                <div class="icon">🎧</div>
-                <div class="content">
-                    <div class="title">Студийные услуги</div>
-                </div>
-            </div>
-            
-            <!-- Release Alerts -->
-            <div class="item services">
-                <div class="icon">🔔</div>
-                <div class="content">
-                    <div class="title">Release Alerts</div>
+                
+                <div id="services" class="children">
+                    <!-- Дистрибьюция музыки -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Дистрибьюция музыки</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Дистрибьюция клипов -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Дистрибьюция клипов</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Продвижение -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Продвижение</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Смартлинк -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Смартлинк</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Концерт касса -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Концерт касса</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Издание физических носителей -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Издание физических носителей</span>
+                        </div>
+                        <div class="toggle" onclick="toggleChildren('media')">▶</div>
+                    </div>
+                    
+                    <div id="media" class="children collapsed">
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Винил</span>
+                            </div>
+                        </div>
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">CD</span>
+                            </div>
+                        </div>
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Кассеты</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Студийные услуги -->
+                    <div class="item level-2">
+                        <div class="indicator category"></div>
+                        <div class="content">
+                            <span class="title">Студийные услуги</span>
+                        </div>
+                        <div class="toggle" onclick="toggleChildren('studio')">▶</div>
+                    </div>
+                    
+                    <div id="studio" class="children collapsed">
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Запись инструментов</span>
+                            </div>
+                        </div>
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Сведение</span>
+                            </div>
+                        </div>
+                        <div class="item level-3">
+                            <div class="indicator subcategory"></div>
+                            <div class="content">
+                                <span class="title">Мастеринг</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
         <footer>
-            <div>Всего элементов: 38 | Сверстано: <span id="currentDate"></span></div>
+            <div>Иерархия: ECOSYSTEM → Магазин / Сервисы и услуги → Категории → Подкатегории</div>
+            <div class="hierarchy">
+                ECOSYSTEM<br>
+                ├─ Магазин<br>
+                │  ├─ Музыкальные инструменты<br>
+                │  ├─ Музыкальное оборудование<br>
+                │  └─ ...<br>
+                └─ Сервисы и услуги<br>
+                   ├─ Дистрибьюция<br>
+                   ├─ Продвижение<br>
+                   └─ ...
+            </div>
         </footer>
     </div>
 
     <script>
-        // Установка текущей даты
-        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('ru-RU');
-        
-        // Обработка кликов на чекбоксы
-        document.querySelectorAll('.checkbox').forEach(checkbox => {
-            checkbox.addEventListener('click', function() {
-                this.classList.toggle('checked');
-                
-                // Обновляем родительскую статистику, если есть
-                updateParentStats(this);
-            });
-        });
-        
-        function updateParentStats(checkbox) {
-            // Находим ближайший родительский элемент с классом category
-            let parentCategory = checkbox.closest('.item')?.previousElementSibling;
-            while (parentCategory && !parentCategory.classList.contains('category')) {
-                parentCategory = parentCategory.previousElementSibling;
+        // Функция для переключения видимости дочерних элементов
+        function toggleChildren(elementId) {
+            const element = document.getElementById(elementId);
+            const toggle = event.currentTarget;
+            
+            if (element.classList.contains('collapsed')) {
+                element.classList.remove('collapsed');
+                toggle.classList.add('expanded');
+            } else {
+                element.classList.add('collapsed');
+                toggle.classList.remove('expanded');
             }
             
-            if (parentCategory) {
-                const statsElement = parentCategory.querySelector('.stats');
-                if (statsElement) {
-                    // Простая логика обновления статистики
-                    const currentText = statsElement.textContent;
-                    const match = currentText.match(/(\d+)\s*[✓❌%]?\s*\/\s*(\d+)/);
-                    
-                    if (match) {
-                        let completed = parseInt(match[1]);
-                        const total = parseInt(match[2]);
-                        
-                        if (checkbox.classList.contains('checked')) {
-                            completed = Math.min(completed + 1, total);
-                        } else {
-                            completed = Math.max(completed - 1, 0);
-                        }
-                        
-                        // Обновляем текст
-                        const prefix = currentText.match(/^[✓❌%]?\s*/)[0] || '';
-                        statsElement.textContent = `${prefix}${completed}/${total}`;
-                    }
-                }
-            }
+            event.stopPropagation();
         }
         
-        // Инициализация проверенных чекбоксов
-        document.querySelectorAll('.checkbox.checked').forEach(checkbox => {
-            updateParentStats(checkbox);
+        // Инициализация состояния
+        document.addEventListener('DOMContentLoaded', function() {
+            // Автоматически разворачиваем первые уровни
+            document.getElementById('ecosystem-root').classList.remove('collapsed');
+            document.querySelector('.item.level-0 .toggle').classList.add('expanded');
+            
+            // Добавляем обработчики для всех toggle элементов
+            document.querySelectorAll('.toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(event) {
+                    const elementId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    toggleChildren(elementId);
+                });
+            });
         });
     </script>
 </body>
